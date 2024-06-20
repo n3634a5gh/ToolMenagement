@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ToolsMenagement.Models.Narzedzie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Narzedzia</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Srednica)
+            </th>
+            <th>
+                Kategoria
+            </th>
+            <th>
+                Trwalosc
+            </th>
+            <th>
+                Uzycie
+            </th>
+            <th>
+                Cykl Regeneracji
+            </th>
+            <th>
+                Wycofany
+            </th>
+            <th>
+                Regeneracja
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Srednica)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKategoriiNavigation.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magazyns.FirstOrDefault().Trwalosc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magazyns.FirstOrDefault().Uzycie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magazyns.FirstOrDefault().CyklRegeneracji)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magazyns.FirstOrDefault().Wycofany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magazyns.FirstOrDefault().Regeneracja)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

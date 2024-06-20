@@ -1,0 +1,48 @@
+﻿@model ToolsMenagement.Controllers.ToolViewController
+
+@{
+    ViewData["Title"] = "Create Narzedzie";
+}
+
+<h1>Create Narzedzie</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Nazwa" class="control-label"></label>
+        <input asp-for="Nazwa" class="form-control" placeholder="Enter name" />
+        <span asp-validation-for="Nazwa" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Srednica" class="control-label"></label>
+        <input asp-for="Srednica" class="form-control" placeholder="Enter diameter" />
+        <span asp-validation-for="Srednica" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedKategoriaId" class="control-label">Kategoria</label>
+        <select asp-for="SelectedKategoriaId" class="form-control" asp-items="@(new SelectList(Model.Kategorie, "IdKategorii", "Opis"))"></select>
+        <span asp-validation-for="SelectedKategoriaId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Trwalosc" class="control-label"></label>
+        <input asp-for="Trwalosc" class="form-control" placeholder="Enter value" />
+        <span asp-validation-for="Trwalosc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('input').on('focus', function () {
+                    $(this).val('');
+                });
+            });
+        </script>
+    }
+}

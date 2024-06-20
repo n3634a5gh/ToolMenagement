@@ -1,0 +1,34 @@
+﻿@model ToolsMenagement.Models.Kategorium
+
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<h1>Create Category</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Opis" class="control-label"></label>
+        <input asp-for="Opis" class="form-control" />
+        <span asp-validation-for="Opis" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Przeznaczenie" class="control-label"></label>
+        <input asp-for="Przeznaczenie" class="form-control" />
+        <span asp-validation-for="Przeznaczenie" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MaterialWykonania" class="control-label"></label>
+        <input asp-for="MaterialWykonania" class="form-control" />
+        <span asp-validation-for="MaterialWykonania" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
